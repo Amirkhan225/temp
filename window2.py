@@ -2,13 +2,13 @@ from PyQt5.QtCore import Qt,QTime,QTimer
 from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QVBoxLayout, QHBoxLayout, QMessageBox, QRadioButton,QLineEdit
 from instr import *
-
+from win3 import*
 class Experiment():
     def __init__(self,age1,pulse1,pulse2,pulse3):
-        self.age1=age1
-        self.pulse1=pulse1
-        self.pulse2=pulse2
-        self.pulse3=pulse3
+        self.age1=int(age1)
+        self.pulse1=int(pulse1)
+        self.pulse2=int(pulse2)
+        self.pulse3=int(pulse3)
 class Test_Win(QWidget):
     def __init__(self):
         super().__init__()
@@ -113,11 +113,11 @@ class Test_Win(QWidget):
         self.f_test.clicked.connect(self.timer_final)
     def next_click(self):
         self.hide()
-        self.exp=Experiment(self.line_age1.text(),self.line_pulse1.text(),self.line_pulse2.text(),self.line_pulse3.text())
+        self.exp=Experiment(self.age1.text(),self.pulse1.text(),self.pulse2.text(),self.pulse3.text())
         self.tw=Final_Win(self.exp)
         #fix
-    def results(self):
-        self.index=(4*(int(self.exp.t1)+int(self.exp.t2)+int(self.exp.t3))-200)/10
+    # def results(self):
+        
 if __name__ == "__main__":
     
     app=QApplication([])
