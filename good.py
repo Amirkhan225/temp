@@ -37,10 +37,7 @@ for i,option in enumerate(menu_options):
 game_state="menu"
 selected_option=0
 while True:
-    for event in pygame.event.get():
-        if event.type== pygame.QUIT:
-            pygame.quit()
-            sys.exit()
+    # for event in pygame.event.get():
     screen.fill(BLACK)
     if game_state=="exit":
         pygame.quit()
@@ -63,6 +60,9 @@ while True:
         text_rect=text.get_rect(center=(400,300))
         screen.blit(text,text_rect)
     for event in pygame.event.get():
+        if event.type== pygame.QUIT:
+            pygame.quit()
+            sys.exit()
         if event.type==pygame.KEYDOWN and game_state=="menu":
             if event.key==pygame.K_UP:
                 selected_option=(selected_option-1)% len(menu_options)
